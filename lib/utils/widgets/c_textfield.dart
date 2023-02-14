@@ -6,13 +6,21 @@ class CommonField extends StatelessWidget {
   final String? hintText;
   final bool? isSecure;
   final String? Function(String?)? validator;
-  const CommonField({this.hintText, this.validator, this.isSecure = false});
+  final TextEditingController controller;
+  const CommonField(
+      {Key? key,
+      this.hintText,
+      this.validator,
+      this.isSecure = false,
+      required this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 10),
       child: TextFormField(
+        controller: controller,
         style: AppTextStyle.subTitle,
         cursorColor: AppColor.white,
         validator: validator,
